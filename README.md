@@ -351,45 +351,6 @@ Run eval assignment:
 pnpm.cmd eval
 ```
 
-Saat eval selesai, cari bagian ini di terminal:
-
-```text
-employee-handbook-relevancy
-employee-handbook-faithfulness
-employee-handbook-g-eval
-employee-handbook-contains
-employee-handbook-exact-match
-```
-
-Hasil yang benar:
-
-```text
-Cases: 6 total / 6 pass / 0 fail / 0 invalid
-Metrics: 6 total / 6 pass / 0 fail / 0 invalid
-```
-
-Arti singkat:
-
-- `PASS`: case berhasil.
-- `FAIL`: jawaban belum sesuai.
-- `INVALID`: metric gagal jalan, biasanya config judge/model/context salah.
-
-Arti metric:
-
-- `relevancy`: jawaban menjawab pertanyaan.
-- `faithfulness`: jawaban didukung evidence handbook.
-- `gEval`: judge mengecek kualitas jawaban.
-- `contains`: jawaban berisi keyword penting.
-- `exactMatch`: jawaban harus sama persis.
-
-Perubahan sampai 100% pass:
-
-- Judge metric memakai `OPENAI_JUDGE_COMPLETION_API="responses"`.
-- Request judge tidak mengirim `temperature` karena GPT-5 tidak mendukung parameter itu.
-- Prompt eval dibuat lebih ringkas.
-- Beberapa expected output dibuat lebih jelas.
-- Exact match hanya dipakai untuk case `Reply exactly`.
-
 ## Menjalankan Project Setelah Clone/Fork Dari GitHub
 
 Pakai bagian ini kalau folder project sudah ada.
@@ -500,3 +461,52 @@ Common errors:
 - Qdrant kosong: jalankan `pnpm.cmd ingest:handbook`.
 - `No data extracted`: pastikan `OPENAI_JUDGE_COMPLETION_API="responses"`.
 - Lens error: cek Lens URL dan keys.
+
+## Hasil Assignment Evals
+
+Bagian ini dibaca setelah menjalankan:
+
+```powershell
+pnpm.cmd eval
+```
+
+Cari lima suite ini di terminal atau Anvia Lens:
+
+```text
+employee-handbook-relevancy
+employee-handbook-faithfulness
+employee-handbook-g-eval
+employee-handbook-contains
+employee-handbook-exact-match
+```
+
+Hasil yang benar untuk setiap suite:
+
+```text
+Cases: 6 total / 6 pass / 0 fail / 0 invalid
+Metrics: 6 total / 6 pass / 0 fail / 0 invalid
+```
+
+Totalnya berarti 30 eval cases pass.
+
+Arti status:
+
+- `PASS`: case berhasil.
+- `FAIL`: jawaban belum sesuai expected behavior.
+- `INVALID`: metric gagal jalan, biasanya karena judge model, env, atau retrieval context.
+
+Arti metric:
+
+- `relevancy`: jawaban menjawab pertanyaan user.
+- `faithfulness`: jawaban didukung evidence handbook.
+- `gEval`: judge model mengecek kualitas jawaban.
+- `contains`: jawaban memuat keyword penting.
+- `exactMatch`: jawaban harus sama persis, hanya untuk case `Reply exactly`.
+
+Yang diubah sampai 100% pass:
+
+- Judge metric memakai `OPENAI_JUDGE_COMPLETION_API="responses"`.
+- Request judge tidak mengirim `temperature` karena GPT-5 tidak mendukung parameter itu.
+- Prompt eval dibuat lebih ringkas supaya jawaban tidak terlalu panjang.
+- Beberapa expected output diperjelas agar sesuai dengan metric.
+- Exact match hanya dipakai untuk jawaban deterministik.

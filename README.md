@@ -1,4 +1,4 @@
-# RAG Agent Evals - Devscale Indonesia Batch I
+# AI Product Engineering Common Pattern - Devscale-Indonesia Batch I
 ## Assignment Day 14 & Day 15
 
 **Instruksi**
@@ -27,7 +27,7 @@ Employee Handbook Assistant.
 - Agent mencari jawaban dari `documents/devscale-employee-handbook.md`.
 - Evals mengecek apakah jawaban agent benar, relevan, dan tidak mengarang.
 
-**Pattern yang digunakan (Day 14 & Day 15)**
+**Pattern yang digunakan**
 
 - RAG: agent mencari context dari handbook sebelum menjawab.
 - Tool calling: agent memakai `handbookSearch`.
@@ -46,8 +46,7 @@ Employee Handbook Assistant.
 - Docker untuk menjalankan PostgreSQL dan Qdrant
 
 ## Membuat Project Dari scratch
-
-Bagian ini menjelaskan susunan project secara singkat. Jika folder project sudah ada, kamu bisa langsung lompat ke bagian **Menjalankan Project Setelah Clone/Fork Dari GitHub**.
+Langkah pembuatan project dari scratch, mengikuti materi pembelajaran alur belajar Day 14 - Understanding Evals for real metrics how AI Agent can be succeed dan Day 15 RAG Agent — Prompt Tuning, Regression Testing, dan Cost Optimization. dan contoh code https://github.com/Devscale-Indonesia/anvia-basic-evals
 
 Hal penting:
 
